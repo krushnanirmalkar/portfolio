@@ -34,3 +34,20 @@
 .pixel-card:focus-within::before {
   opacity: 1;
 }
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .pixel-card {
+    height: 300px;
+    width: 230px;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pixel-card {
+    height: 250px;
+    width: 200px;
+    border-radius: 16px;
+  }
+}
