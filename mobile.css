@@ -1,0 +1,71 @@
+/* MOBILE STYLES (UNDER 768px) */
+
+@media (max-width: 768px) {
+  /* RESET CURSOR FOR TOUCH */
+  .c-dot, .c-ring { display: none !important; }
+  body { cursor: auto !important; }
+
+  /* NAVIGATION */
+  nav {
+    padding: 16px 24px;
+  }
+  .nav-links {
+    display: none; /* Simplest approach: hide links or stack them */
+  }
+  .nav-status {
+    font-size: 9px;
+  }
+
+  /* HERO */
+  #hero {
+    padding: 0 24px 40px;
+    height: 80vh;
+    min-height: 500px;
+  }
+  .hero-side-l, .hero-side-r {
+    display: none; /* Remove side text on small screens */
+  }
+  .hero-h {
+    font-size: clamp(42px, 12vw, 64px);
+    line-height: 1.0;
+  }
+  .hero-foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+  .hero-caption {
+    font-size: 10px;
+    max-width: 100%;
+  }
+  .hero-arrow {
+    display: none;
+  }
+
+  /* LAYOUT */
+  .wrap {
+    padding: 0 24px;
+  }
+  .s {
+    padding: 60px 0;
+  }
+  .s-label {
+    margin-bottom: 32px;
+  }
+  
+  /* GRID SYSTEMS (Guessing common patterns) */
+  .grid, .projects-grid, .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+/* SMALL MOBILE (UNDER 480px) */
+@media (max-width: 480px) {
+  .hero-h {
+    font-size: 40px;
+  }
+  .s-h {
+    font-size: 28px !important;
+  }
+}
