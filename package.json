@@ -1,0 +1,35 @@
+{
+  "name": "final-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krushnanirmalkar/portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/krushnanirmalkar/portfolio/issues"
+  },
+  "homepage": "https://github.com/krushnanirmalkar/portfolio#readme",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "three": "^0.183.2",
+    "vite": "^8.0.3"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "gsap": "^3.14.2",
+    "react-icons": "^5.6.0"
+  }
+}
