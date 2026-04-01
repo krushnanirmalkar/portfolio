@@ -83,15 +83,8 @@ export default function Experience() {
           {EXPERIENCES.map((exp, idx) => (
             <div 
               key={idx}
-              className={`rev ${isVisible ? 'in' : ''}`}
+              className={`exp-item rev ${isVisible ? 'in' : ''}`}
               style={{
-                display: 'grid',
-                gridTemplateColumns: '100px 1fr 160px',
-                gap: '40px',
-                padding: '44px 0',
-                borderTop: '1px solid var(--line)',
-                alignItems: 'start',
-                transition: 'background .2s',
                 transitionDelay: `${(idx + 1) * 0.1}s`
               }}
             >
@@ -99,15 +92,20 @@ export default function Experience() {
                 {exp.period}
               </div>
 
-              <div>
-                <div className="exp-role">{exp.role}</div>
-                <div className="exp-org">{exp.org}</div>
-                <div className="exp-note">{exp.description}</div>
-                <ul className="exp-pts">
-                  {exp.highlights.map((hl, i) => (
-                    <li key={i}>{hl}</li>
-                  ))}
-                </ul>
+              <div className="exp-main">
+                <div className="exp-head">
+                  <div className="exp-role">{exp.role}</div>
+                  <div className="exp-org">{exp.org}</div>
+                </div>
+
+                <div className="exp-body">
+                  <div className="exp-note">{exp.description}</div>
+                  <ul className="exp-pts">
+                    {exp.highlights.map((hl, i) => (
+                      <li key={i}>{hl}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
               <div className="exp-loc">

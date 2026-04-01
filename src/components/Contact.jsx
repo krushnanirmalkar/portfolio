@@ -82,11 +82,50 @@ export default function Contact() {
     }
   }
 
-  const contactLinks = [
-    { label: 'Email', value: 'krushnanirmalkar@gmail.com', href: 'mailto:krushnanirmalkar@gmail.com' },
-    { label: 'GitHub', value: 'github.com/krushnanirmalkar', href: 'https://github.com/krushnanirmalkar' },
-    { label: 'LinkedIn', value: 'krushna-nirmalkar', href: 'https://www.linkedin.com/in/krushna-nirmalkar-b3a281327/' },
-    { label: 'Phone', value: '88306321330', href: 'tel:+918830632130' }
+  const actionLinks = [
+    {
+      label: 'Call',
+      href: 'tel:88306321330',
+      icon: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M7.2 10.4c1.6 3.2 3.9 5.5 7.1 7.1l2.4-2.4c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V21c0 .6-.4 1-1 1C10.1 22 2 13.9 2 4c0-.6.4-1 1-1h4.6c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1l-2.3 2.5Z"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinejoin="round"
+          />
+        </svg>
+      )
+    },
+    {
+      label: 'GitHub',
+      href: 'https://github.com/krushnanirmalkar',
+      icon: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M12 2C6.48 2 2 6.7 2 12.5c0 4.63 2.87 8.56 6.84 9.95.5.1.68-.23.68-.5v-1.78c-2.78.62-3.37-1.4-3.37-1.4-.45-1.2-1.1-1.52-1.1-1.52-.9-.65.07-.64.07-.64 1 .08 1.53 1.1 1.53 1.1.9 1.6 2.36 1.14 2.94.87.1-.68.35-1.14.63-1.4-2.22-.26-4.56-1.17-4.56-5.22 0-1.15.38-2.1 1-2.84-.1-.26-.43-1.32.1-2.75 0 0 .82-.27 2.7 1.08a9 9 0 0 1 2.46-.35c.84 0 1.7.12 2.46.35 1.88-1.35 2.7-1.08 2.7-1.08.53 1.43.2 2.5.1 2.75.62.74 1 1.69 1 2.84 0 4.06-2.34 4.96-4.57 5.22.36.33.68.98.68 1.98v2.93c0 .27.18.6.69.5A10.4 10.4 0 0 0 22 12.5C22 6.7 17.52 2 12 2Z"
+            fill="currentColor"
+          />
+        </svg>
+      )
+    },
+    {
+      label: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/krushna-nirmalkar-b3a281327/',
+      icon: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6.5 9.5H3.7V20.3h2.8V9.5Z" fill="currentColor" />
+          <path
+            d="M5.1 3.7c-.9 0-1.6.7-1.6 1.6 0 .9.7 1.6 1.6 1.6.9 0 1.6-.7 1.6-1.6 0-.9-.7-1.6-1.6-1.6Z"
+            fill="currentColor"
+          />
+          <path
+            d="M20.3 20.3h-2.8v-5.6c0-1.3 0-3-1.8-3s-2 1.4-2 2.9v5.7h-2.8V9.5h2.7v1.5h.1c.4-.8 1.5-1.7 3-1.7 3.2 0 3.8 2.1 3.8 4.9v6.1Z"
+            fill="currentColor"
+          />
+        </svg>
+      )
+    }
   ]
 
   return (
@@ -112,86 +151,12 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="contact-cols" style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '100px',
-          marginTop: '60px',
-          alignItems: 'start'
-        }}>
-          {/* Left: Message & Links */}
-          <div>
-            <div className={`rev ${isVisible ? 'in' : ''} d2`}>
-              <p className="contact-quote" style={{
-                fontFamily: 'var(--serif)',
-                fontSize: 'clamp(22px, 3vw, 36px)',
-                fontStyle: 'italic',
-                fontWeight: '400',
-                lineHeight: '1.4',
-                color: 'rgba(240, 237, 232, .65)',
-                marginTop: '0'
-              }}>
-                Let's collaborate and create something extraordinary together.
-              </p>
-            </div>
-
-            <div className={`clinks rev ${isVisible ? 'in' : ''} d3`} style={{ marginTop: '44px' }}>
-              {contactLinks.map((link, idx) => (
-                <div 
-                  key={idx}
-                  className="cl-row"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'baseline',
-                    justifyContent: 'space-between',
-                    padding: '17px 0',
-                    borderTop: '1px solid var(--line)',
-                    borderBottom: idx === contactLinks.length - 1 ? '1px solid var(--line)' : 'none'
-                  }}
-                >
-                  <div className="cl-k" style={{
-                    fontFamily: 'var(--mono)',
-                    fontSize: '9px',
-                    letterSpacing: '.14em',
-                    textTransform: 'uppercase',
-                    color: 'var(--faint)'
-                  }}>
-                    {link.label}
-                  </div>
-                  <a 
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cl-v"
-                    style={{
-                      fontSize: '13px',
-                      color: 'var(--white)',
-                      textDecoration: 'none',
-                      transition: 'color .2s'
-                    }}
-                  >
-                    {link.value}
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right: Contact Form */}
-          <div className={`rev ${isVisible ? 'in' : ''} d4`}>
-            <form onSubmit={handleSubmit} className="cform" style={{ display: 'flex', flexDirection: 'column' }}>
-              <div className="cf-row" style={{ borderTop: '1px solid var(--line)' }}>
-                <label className="cf-label" style={{
-                  display: 'block',
-                  fontFamily: 'var(--mono)',
-                  fontSize: '9px',
-                  letterSpacing: '.15em',
-                  textTransform: 'uppercase',
-                  color: 'var(--faint)',
-                  padding: '18px 0 5px'
-                }}>
-                  Name
-                </label>
+        <div className="contact-cols">
+          {/* Form (shows first on mobile) */}
+          <div className={`contact-form-wrap rev ${isVisible ? 'in' : ''} d4`}>
+            <form onSubmit={handleSubmit} className="cform">
+              <div className="cf-row">
+                <label className="cf-label">Name</label>
                 <input
                   type="text"
                   name="name"
@@ -199,35 +164,12 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   className="cf-inp"
-                  style={{
-                    width: '100%',
-                    background: 'transparent',
-                    border: 'none',
-                    outline: 'none',
-                    color: 'var(--white)',
-                    fontFamily: 'var(--sans)',
-                    fontSize: '14px',
-                    fontWeight: '300',
-                    paddingBottom: '16px',
-                    resize: 'none',
-                    lineHeight: '1.6',
-                    caretColor: 'var(--white)'
-                  }}
+                  placeholder="Your name"
                 />
               </div>
 
-              <div className="cf-row" style={{ borderTop: '1px solid var(--line)' }}>
-                <label className="cf-label" style={{
-                  display: 'block',
-                  fontFamily: 'var(--mono)',
-                  fontSize: '9px',
-                  letterSpacing: '.15em',
-                  textTransform: 'uppercase',
-                  color: 'var(--faint)',
-                  padding: '18px 0 5px'
-                }}>
-                  Email
-                </label>
+              <div className="cf-row">
+                <label className="cf-label">Email</label>
                 <input
                   type="email"
                   name="email"
@@ -235,56 +177,20 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   className="cf-inp"
-                  style={{
-                    width: '100%',
-                    background: 'transparent',
-                    border: 'none',
-                    outline: 'none',
-                    color: 'var(--white)',
-                    fontFamily: 'var(--sans)',
-                    fontSize: '14px',
-                    fontWeight: '300',
-                    paddingBottom: '16px',
-                    resize: 'none',
-                    lineHeight: '1.6',
-                    caretColor: 'var(--white)'
-                  }}
+                  placeholder="your@email.com"
                 />
               </div>
 
-              <div className="cf-row" style={{ borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}>
-                <label className="cf-label" style={{
-                  display: 'block',
-                  fontFamily: 'var(--mono)',
-                  fontSize: '9px',
-                  letterSpacing: '.15em',
-                  textTransform: 'uppercase',
-                  color: 'var(--faint)',
-                  padding: '18px 0 5px'
-                }}>
-                  Message
-                </label>
+              <div className="cf-row cf-row-last">
+                <label className="cf-label">Message</label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="cf-inp"
-                  rows="5"
-                  style={{
-                    width: '100%',
-                    background: 'transparent',
-                    border: 'none',
-                    outline: 'none',
-                    color: 'var(--white)',
-                    fontFamily: 'var(--sans)',
-                    fontSize: '14px',
-                    fontWeight: '300',
-                    paddingBottom: '16px',
-                    resize: 'none',
-                    lineHeight: '1.6',
-                    caretColor: 'var(--white)'
-                  }}
+                  className="cf-inp cf-textarea"
+                  rows="7"
+                  placeholder="Tell me about your project..."
                 />
               </div>
 
@@ -323,6 +229,35 @@ export default function Contact() {
                 </div>
               )}
             </form>
+          </div>
+
+          {/* Details + actions */}
+          <div className="contact-left">
+            <div className={`rev ${isVisible ? 'in' : ''} d2`}>
+              <p className="contact-quote">
+                Let's collaborate and create something extraordinary together.
+              </p>
+            </div>
+
+            <div className={`contact-actions rev ${isVisible ? 'in' : ''} d3`}>
+              {actionLinks.map((link) => {
+                const isExternal = /^https?:\/\//.test(link.href)
+
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className="contact-action"
+                    target={isExternal ? '_blank' : undefined}
+                    rel={isExternal ? 'noopener noreferrer' : undefined}
+                    aria-label={link.label}
+                    title={link.label}
+                  >
+                    <span className="contact-action-ico">{link.icon}</span>
+                  </a>
+                )
+              })}
+            </div>
           </div>
         </div>
       </div>

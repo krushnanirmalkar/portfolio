@@ -69,19 +69,22 @@ function App() {
       <Contact />
       
       <footer style={{
-        padding: '36px 52px',
+        padding: 'clamp(24px 20px, 36px 52px)',
         display: 'flex',
+        flexDirection: window.innerWidth <= 480 ? 'column' : 'row',
         justifyContent: 'space-between',
-        alignItems: 'center',
+        alignItems: window.innerWidth <= 480 ? 'center' : 'center',
+        gap: window.innerWidth <= 480 ? '12px' : '0',
         fontFamily: 'var(--mono)',
-        fontSize: '9px',
+        fontSize: 'clamp(8px, 1vw, 9px)',
         letterSpacing: '.12em',
         textTransform: 'uppercase',
         color: 'var(--faint)',
-        borderTop: '1px solid var(--line)'
+        borderTop: '1px solid var(--line)',
+        textAlign: window.innerWidth <= 480 ? 'center' : 'left'
       }}>
         <span>© 2024 Krushna Nirmalkar</span>
-        <span>Full Stack Developer | Pune</span>
+        <span>CSE Student | Cloud Enthusiast | Pune</span>
       </footer>
     </div>
   )

@@ -3,9 +3,13 @@ import * as THREE from 'three'
 
 export default function Hero() {
   const canvasRef = useRef(null)
+  const profileSrc = `${import.meta.env.BASE_URL}media/profile.jpeg`
 
   useEffect(() => {
     if (!canvasRef.current) return
+
+    let rafId = 0
+    let disposed = false
 
     // Three.js setup
     const scene = new THREE.Scene()
@@ -62,14 +66,18 @@ export default function Hero() {
     // Mouse parallax
     let mouseX = 0,
       mouseY = 0
-    window.addEventListener('mousemove', (e) => {
+
+    const handleMouseMove = (e) => {
       mouseX = (e.clientX / window.innerWidth) * 2 - 1
       mouseY = -(e.clientY / window.innerHeight) * 2 + 1
-    })
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
 
     // Animation loop
     const animate = () => {
-      requestAnimationFrame(animate)
+      if (disposed) return
+      rafId = requestAnimationFrame(animate)
 
       const pos = geometry.attributes.position.array
       const vel = geometry.attributes.velocity.array
@@ -97,6 +105,7 @@ export default function Hero() {
       camera.rotation.x = mouseY * 0.3
       camera.rotation.y = mouseX * 0.3
 
+      if (disposed) return
       renderer.render(scene, camera)
     }
 
@@ -104,6 +113,7 @@ export default function Hero() {
 
     // Handle window resize
     const handleResize = () => {
+      if (disposed) return
       camera.aspect = window.innerWidth / window.innerHeight
       camera.updateProjectionMatrix()
       renderer.setSize(window.innerWidth, window.innerHeight)
@@ -112,6 +122,9 @@ export default function Hero() {
     window.addEventListener('resize', handleResize)
 
     return () => {
+      disposed = true
+      if (rafId) cancelAnimationFrame(rafId)
+      window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('resize', handleResize)
       geometry.dispose()
       material.dispose()
@@ -121,13 +134,14 @@ export default function Hero() {
 
   return (
     <section id="hero">
-      <canvas ref={canvasRef} id="hero-canvas" style={{ position: 'absolute', inset: 0 }}></canvas>
-      
-      <div className="hero-body" style={{ display: 'flex', gap: '60px', alignItems: 'center' }}>
-        <div style={{ flex: 1 }}>
-          <div style={{ animation: 'up 1s cubic-bezier(.16,1,.3,1) both', flexShrink: 0, marginTop: '40px', marginBottom: '60px' }}>
+      <canvas ref={canvasRef} id="hero-canvas"></canvas>
+
+      <div className="hero-body">
+        <div className="hero-text">
+          <div className="hero-title-wrap">
             <h1 className="hero-h">
-              <em>Krushna</em><br />
+              <em>Krushna</em>
+              <br />
               Nirmalkar
             </h1>
           </div>
@@ -137,8 +151,19 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-image" style={{ flex: 1, width: '350px', height: '450px', borderRadius: '12px', overflow: 'hidden', flexShrink: 0 }}>
-          <img src="public/media/profile.jpeg" alt="Krushna Nirmalkar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div className="hero-image">
+          <img
+            src={profileSrc}
+            alt="Krushna Nirmalkar"
+            loading="eager"
+            decoding="async"
+            onError={() => {
+              // Helps diagnose Vercel/production-only issues (404 path, base path, caching)
+              // without changing the UI/UX.
+              // eslint-disable-next-line no-console
+              console.error('[Hero] profile image failed to load:', profileSrc)
+            }}
+          />
         </div>
       </div>
     </section>
