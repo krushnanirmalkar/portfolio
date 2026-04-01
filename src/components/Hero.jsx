@@ -123,22 +123,22 @@ export default function Hero() {
     <section id="hero">
       <canvas ref={canvasRef} id="hero-canvas" style={{ position: 'absolute', inset: 0 }}></canvas>
       
-      <div className="hero-body">
-        <div style={{ animation: 'up 1s cubic-bezier(.16,1,.3,1) both', flexShrink: 0, marginTop: '40px', marginBottom: '60px' }}>
-          <h1 className="hero-h">
-            <em>Krushna</em><br />
-            Nirmalkar
-          </h1>
-        </div>
+      <div className="hero-body" style={{ display: 'flex', gap: '60px', alignItems: 'center' }}>
+        <div style={{ flex: 1 }}>
+          <div style={{ animation: 'up 1s cubic-bezier(.16,1,.3,1) both', flexShrink: 0, marginTop: '40px', marginBottom: '60px' }}>
+            <h1 className="hero-h">
+              <em>Krushna</em><br />
+              Nirmalkar
+            </h1>
+          </div>
 
-        <div className="hero-foot">
           <div className="hero-caption">
             Building <em>meaningful</em> digital experiences through code & design.
           </div>
+        </div>
 
-          <div className="hero-image">
-            <img src="public/media/profile.jpeg" alt="Krushna Nirmalkar" />
-          </div>
+        <div className="hero-image" style={{ flex: 1, width: '350px', height: '450px', borderRadius: '12px', overflow: 'hidden', flexShrink: 0 }}>
+          <img src="public/media/profile.jpeg" alt="Krushna Nirmalkar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
       </div>
     </section>

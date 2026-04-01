@@ -205,7 +205,7 @@
 
 @media (max-width: 768px) {
   .mobile-menu-button {
-    display: flex;
+    display: none !important;
   }
 }
 

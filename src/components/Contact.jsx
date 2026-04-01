@@ -44,15 +44,25 @@ export default function Contact() {
     setError('')
 
     try {
+      const emailData = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: 'krushnanirmalkar@gmail.com'
+      }
+
+      // Send auto-reply to form filler
       await emailjs.send(
         'service_4unpg3p',
         'template_3f7ycff',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: 'krushnanirmalkar@gmail.com'
-        }
+        emailData
+      )
+
+      // Send notification to you
+      await emailjs.send(
+        'service_4unpg3p',
+        'template_jn2zigd',
+        emailData
       )
       
       setSubmitted(true)

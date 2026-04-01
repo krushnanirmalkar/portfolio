@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import PixelCard from './PixelCard'
 import { RetroGrid } from './RetroGrid'
 
 export default function About() {
@@ -53,23 +52,6 @@ export default function About() {
             <p>
               When I'm not coding, I'm exploring new technologies, contributing to open-source projects, and mentoring fellow developers.
             </p>
-          </div>
-
-          <div className={`rev ${isVisible ? 'in' : ''} d3`}>
-            <PixelCard variant="pink">
-              <img 
-                src="/media/profile.jpeg" 
-                alt="Krushna Nirmalkar" 
-                style={{ 
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  display: 'block',
-                  position: 'absolute',
-                  inset: 0
-                }} 
-              />
-            </PixelCard>
           </div>
         </div>
       </div>
