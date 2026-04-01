@@ -206,35 +206,3 @@
     font-size: 9px;
   }
 }
-
-  .stack-title {
-    font-size: clamp(24px, 5vw, 48px);
-  }
-
-  .stack-desc {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 480px) {
-  .tech-pills-wrap {
-    gap: 10px;
-  }
-
-  .tech-pill {
-    padding: 8px 14px;
-    font-size: 10px;
-  }
-
-  .pill-icon {
-    font-size: 14px;
-  }
-
-  .stack-title {
-    font-size: clamp(20px, 4vw, 36px);
-  }
-
-  .stack-desc {
-    font-size: 12px;
-  }
-}
