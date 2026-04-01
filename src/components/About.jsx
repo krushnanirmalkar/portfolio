@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import PixelCard from './PixelCard'
+import { RetroGrid } from './RetroGrid'
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false)
@@ -18,8 +19,9 @@ export default function About() {
   }, [])
 
   return (
-    <section className="s" id="about">
-      <div className="wrap">
+    <section className="s relative overflow-hidden" id="about">
+      <RetroGrid />
+      <div className="wrap relative z-10">
         <div className={`s-label rev ${isVisible ? 'in' : ''} d1`}>
           ABOUT | KNOW ME
         </div>
