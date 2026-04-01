@@ -137,7 +137,7 @@ export default function Hero() {
           </div>
 
           <div className="hero-image">
-            <img src="/media/profile.jpeg" alt="Krushna Nirmalkar" />
+            <img src="public/media/profile.jpeg" alt="Krushna Nirmalkar" />
           </div>
         </div>
       </div>
