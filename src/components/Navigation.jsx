@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from 'react'
 import PillNav from './PillNav'
+import { AnimatedThemeToggler } from './ui/animated-theme-toggler'
 
-export default function Navigation() {
+export default function Navigation({ theme = 'dark', onToggleTheme }) {
   const [activeHref, setActiveHref] = useState('#about')
   const [isStuck, setIsStuck] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -77,18 +78,32 @@ export default function Navigation() {
         <PillNav 
           items={navItems}
           activeHref={activeHref}
-          baseColor="#0c0c0c"
-          pillColor="#f0ede8"
-          hoveredPillTextColor="#0c0c0c"
-          pillTextColor="#0c0c0c"
+          baseColor="var(--black)"
+          pillColor="var(--white)"
+          hoveredPillTextColor="var(--white)"
+          pillTextColor="var(--black)"
           ease="power3.easeOut"
           initialLoadAnimation={true}
+          endItem={
+            <AnimatedThemeToggler
+              theme={theme}
+              onToggle={onToggleTheme}
+              className="pill"
+            />
+          }
         />
       </div>
 
       {/* Mobile Hamburger Menu */}
       <div className="nav-mobile">
         <div className="nav-brand">KN</div>
+
+        <AnimatedThemeToggler
+          theme={theme}
+          onToggle={onToggleTheme}
+          className="pill theme-fab"
+        />
+
         <button 
           className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -117,10 +132,6 @@ export default function Navigation() {
         </div>
       )}
       
-      <div className="nav-status">
-        <span className="s-dot"></span>
-        <span>Available • Pune</span>
-      </div>
     </nav>
   )
 }

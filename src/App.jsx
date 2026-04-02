@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Intro from './components/Intro'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
@@ -11,8 +11,20 @@ import Contact from './components/Contact'
 import './App.css'
 
 function App() {
+  const [theme, setTheme] = useState('dark')
   const cursorDotRef = useRef(null)
   const cursorRingRef = useRef(null)
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme')
+    const initialTheme = savedTheme === 'light' ? 'light' : 'dark'
+    setTheme(initialTheme)
+  }, [])
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    localStorage.setItem('theme', theme)
+  }, [theme])
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -59,8 +71,11 @@ function App() {
       <div className="c-ring" ref={cursorRingRef}></div>
       
       <Intro />
-      <Navigation />
-      <Hero />
+      <Navigation
+        theme={theme}
+        onToggleTheme={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
+      />
+      <Hero theme={theme} />
       <About />
       <Stack />
       <Experience />

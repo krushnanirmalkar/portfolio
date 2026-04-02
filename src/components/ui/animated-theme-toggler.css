@@ -1,0 +1,92 @@
+.animated-theme-toggler {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: none;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Desktop pill-nav integration */
+.animated-theme-toggler.pill {
+  width: var(--nav-h);
+  padding: 0;
+}
+
+/* Mobile floating action button */
+.animated-theme-toggler.theme-fab {
+  width: 44px;
+  height: 44px;
+  padding: 0 !important;
+  border-radius: 9999px;
+  border: 1px solid var(--line-m);
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  line-height: 0;
+  font-size: 0 !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+}
+
+/* Ensure theme-fab visuals win over global .pill styles */
+.animated-theme-toggler.theme-fab.pill {
+  background: var(--white) !important;
+  color: var(--black) !important;
+}
+
+@media (max-width: 768px) {
+  .animated-theme-toggler.theme-fab {
+    position: fixed !important;
+    right: 20px;
+    bottom: 32px;
+    z-index: 1000;
+  }
+}
+
+.animated-theme-toggler:focus-visible {
+  outline: 2px solid var(--line-m);
+  outline-offset: 3px;
+}
+
+.att-icons {
+  width: 18px;
+  height: 18px;
+  display: block;
+  position: relative;
+}
+
+.animated-theme-toggler.theme-fab .att-icons {
+  width: 20px;
+  height: 20px;
+}
+
+.att-icon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.75);
+  transition: opacity 260ms var(--ease), transform 420ms var(--ease);
+}
+
+.att-icon.att-show {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.animated-theme-toggler:hover .att-icon.att-show {
+  transform: rotate(8deg) scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .att-icon {
+    transition: none;
+  }
+
+  .animated-theme-toggler:hover .att-icon.att-show {
+    transform: none;
+  }
+}

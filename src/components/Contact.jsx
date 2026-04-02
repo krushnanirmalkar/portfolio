@@ -139,14 +139,7 @@ export default function Contact() {
           <h2 className={`s-h rev ${isVisible ? 'in' : ''} d2`}>
             Get In Touch
           </h2>
-          <p className={`section-desc rev ${isVisible ? 'in' : ''} d3`} style={{
-            fontFamily: 'var(--mono)',
-            fontSize: '14px',
-            letterSpacing: '.05em',
-            color: 'var(--faint)',
-            marginTop: '20px',
-            lineHeight: '1.6'
-          }}>
+          <p className={`section-desc rev ${isVisible ? 'in' : ''} d3`}>
             Ready to collaborate on exciting projects or just want to say hello? Reach out through any of the channels below.
           </p>
         </div>
@@ -200,8 +193,20 @@ export default function Contact() {
                 className="cf-btn"
                 style={{
                   marginTop: '28px',
-                  background: submitted ? 'var(--faint)' : isLoading ? 'rgba(240, 237, 232, 0.5)' : error ? '#dc3545' : 'var(--white)',
-                  color: submitted ? 'var(--white)' : isLoading ? 'var(--white)' : error ? '#ffffff' : 'var(--black)',
+                  background: submitted
+                    ? 'var(--faint)'
+                    : isLoading
+                      ? 'rgba(var(--white-rgb), 0.5)'
+                      : error
+                        ? '#dc3545'
+                        : 'var(--white)',
+                  color: submitted
+                    ? 'var(--white)'
+                    : isLoading
+                      ? 'var(--faint)'
+                      : error
+                        ? 'var(--white)'
+                        : 'var(--black)',
                   border: 'none',
                   padding: '16px 40px',
                   fontFamily: 'var(--mono)',

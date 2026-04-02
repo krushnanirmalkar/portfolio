@@ -6,7 +6,7 @@
   height: 100%;
   min-height: 100vh;
   min-height: 100dvh;
-  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+  background: var(--black);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,12 +16,6 @@
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0;
   margin: 0;
-}
-
-.intro-container.exit {
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
 }
 
 .intro-content {
@@ -46,7 +40,7 @@
   font-family: 'Playfair Display', serif;
   font-size: clamp(48px, 10vw, 100px);
   font-weight: 900;
-  color: #f0ede8;
+  color: var(--white);
   letter-spacing: -0.02em;
   line-height: 1.1;
   min-height: 1.2em;
@@ -54,10 +48,9 @@
   word-break: break-word;
   padding: 0 20px;
 }
-48px, 10vw, 10
 .cursor {
   font-size: clamp(60px, 12vw, 120px);
-  color: #f0ede8;
+  color: var(--white);
   animation: blink 1s infinite;
   opacity: 0;
 }

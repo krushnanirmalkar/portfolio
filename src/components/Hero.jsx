@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 
-export default function Hero() {
+export default function Hero({ theme = 'dark' }) {
   const canvasRef = useRef(null)
   const profileSrc = `${import.meta.env.BASE_URL}media/profile.jpeg`
 
@@ -53,7 +53,7 @@ export default function Hero() {
     geometry.setAttribute('angle', new THREE.BufferAttribute(angles, 1))
 
     const material = new THREE.PointsMaterial({
-      color: 0xf0ede8,
+      color: theme === 'dark' ? 0xf0ede8 : 0x0c0c0c,
       size: 0.08,
       sizeAttenuation: true,
       transparent: true,
@@ -130,7 +130,7 @@ export default function Hero() {
       material.dispose()
       renderer.dispose()
     }
-  }, [])
+  }, [theme])
 
   return (
     <section id="hero">

@@ -18,52 +18,94 @@ export default function Intro() {
   const [isTyping, setIsTyping] = useState(true)
   const [done, setDone] = useState(false)
 
-  const TOTAL_TIME = 7000 // 7 seconds
-  const timePerGreeting = TOTAL_TIME / GREETINGS.length // ~875ms per greeting
+  // Requirements:
+  // - Preloader should run for 5 seconds total
+  // - All greetings should complete within those same 5 seconds
+  const TOTAL_TIME_MS = 5000
+  const MIN_CHAR_DELAY_MS = 15
+  const MAX_CHAR_DELAY_MS = 80
+  const MIN_HOLD_MS = 120
 
   useEffect(() => {
-    if (done) return
+    let cancelled = false
+    const timeouts = []
+    const intervals = []
 
-    const greeting = GREETINGS[currentIdx].text
-    let charIdx = 0
+    const safe = (fn) => {
+      if (!cancelled) fn()
+    }
 
-    if (isTyping) {
+    const clearAll = () => {
+      for (const id of timeouts) clearTimeout(id)
+      for (const id of intervals) clearInterval(id)
+    }
+
+    const slotMs = TOTAL_TIME_MS / GREETINGS.length
+
+    const startGreeting = (idx) => {
+      const greeting = GREETINGS[idx]?.text ?? ''
+      const greetingLength = Math.max(1, greeting.length)
+
+      // Type within the slot, leaving a small hold period at the end.
+      const typingMs = Math.max(200, slotMs - MIN_HOLD_MS)
+      const charDelay = Math.min(
+        MAX_CHAR_DELAY_MS,
+        Math.max(MIN_CHAR_DELAY_MS, typingMs / greetingLength)
+      )
+
+      safe(() => {
+        setCurrentIdx(idx)
+        setDisplayText('')
+        setIsTyping(true)
+      })
+
+      let charIdx = 0
       const typingInterval = setInterval(() => {
-        if (charIdx < greeting.length) {
-          setDisplayText(greeting.slice(0, charIdx + 1))
-          charIdx++
-        } else {
-          setIsTyping(false)
+        charIdx += 1
+        if (charIdx <= greeting.length) {
+          safe(() => setDisplayText(greeting.slice(0, charIdx)))
+        }
+        if (charIdx >= greeting.length) {
           clearInterval(typingInterval)
+          safe(() => setIsTyping(false))
         }
-      }, 20)
+      }, charDelay)
+      intervals.push(typingInterval)
 
-      return () => clearInterval(typingInterval)
-    } else {
       const nextTimeout = setTimeout(() => {
-        if (currentIdx < GREETINGS.length - 1) {
-          setCurrentIdx(currentIdx + 1)
-          setDisplayText('')
-          setIsTyping(true)
+        clearInterval(typingInterval)
+        safe(() => {
+          setDisplayText(greeting)
+          setIsTyping(false)
+        })
+
+        if (idx < GREETINGS.length - 1) {
+          startGreeting(idx + 1)
         } else {
-          setDone(true)
+          safe(() => setDone(true))
         }
-      }, timePerGreeting / 2)
-
-      return () => clearTimeout(nextTimeout)
+      }, slotMs)
+      timeouts.push(nextTimeout)
     }
-  }, [isTyping, currentIdx, done, timePerGreeting])
 
-  const [isExiting, setIsExiting] = useState(false)
+    startGreeting(0)
 
-  useEffect(() => {
-    if (done) {
-      setIsExiting(true)
+    // Hard stop to guarantee the intro never exceeds 5 seconds.
+    const hardDone = setTimeout(() => {
+      safe(() => setDone(true))
+    }, TOTAL_TIME_MS)
+    timeouts.push(hardDone)
+
+    return () => {
+      cancelled = true
+      clearAll()
     }
-  }, [done])
+  }, [])
+
+  if (done) return null
 
   return (
-    <div className={`intro-container ${isExiting ? 'exit' : ''}`}>
+    <div className="intro-container">
       <div className="intro-content">
         <div className="greeting-text">
           <span className="greeting-word">{displayText}</span>

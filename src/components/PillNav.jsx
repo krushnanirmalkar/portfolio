@@ -13,6 +13,7 @@ const PillNav = ({
   pillColor = '#060010',
   hoveredPillTextColor = '#060010',
   pillTextColor,
+  endItem,
   onMobileMenuClick,
   initialLoadAnimation = true
 }) => {
@@ -283,6 +284,10 @@ const PillNav = ({
                 </a>
               </li>
             ))}
+
+            {endItem ? (
+              <li role="none">{endItem}</li>
+            ) : null}
           </ul>
         </div>
 

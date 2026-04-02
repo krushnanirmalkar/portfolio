@@ -29,14 +29,7 @@ export default function About() {
           <h2 className={`s-h rev ${isVisible ? 'in' : ''} d2`}>
             Who I Am
           </h2>
-          <p className={`section-desc rev ${isVisible ? 'in' : ''} d3`} style={{
-            fontFamily: 'var(--mono)',
-            fontSize: '14px',
-            letterSpacing: '.05em',
-            color: 'var(--faint)',
-            marginTop: '20px',
-            lineHeight: '1.6'
-          }}>
+          <p className={`section-desc rev ${isVisible ? 'in' : ''} d3`}>
             A full-stack developer passionate about building meaningful digital experiences through innovation and clean code.
           </p>
         </div>

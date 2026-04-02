@@ -67,14 +67,7 @@ export default function Experience() {
           <h2 className={`s-h rev ${isVisible ? 'in' : ''} d2`}>
             Professional Experience
           </h2>
-          <p className={`section-desc rev ${isVisible ? 'in' : ''} d3`} style={{
-            fontFamily: 'var(--mono)',
-            fontSize: '14px',
-            letterSpacing: '.05em',
-            color: 'var(--faint)',
-            marginTop: '20px',
-            lineHeight: '1.6'
-          }}>
+          <p className={`section-desc rev ${isVisible ? 'in' : ''} d3`}>
             From internships to leadership roles, building and shipping real-world solutions across cloud, web, and data science.
           </p>
         </div>

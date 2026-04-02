@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 
+const LINKEDIN_CERTS_URL = 'https://www.linkedin.com/in/krushna-nirmalkar-b3a281327/details/certifications/'
+
 const CERTIFICATES = [
-  { title: 'Data Analytics using Python', org: 'IIT Roorkee' },
-  { title: 'Data Science using Python', org: 'IIT Madras' },
-  { title: 'Introduction to Large Language Models', org: 'IBM SkillsBuild (2025)' },
-  { title: 'AWS Educate Introduction to Generative AI', org: 'AWS' },
-  { title: 'Deloitte Australia - Data Analytics Job Simulation', org: 'Deloitte' },
-  { title: 'Tata - GenAI Powered Data Analytics Job Simulation', org: 'Tata' }
+  { title: 'Data Analytics using Python', org: 'IIT Roorkee', proofUrl: LINKEDIN_CERTS_URL },
+  { title: 'Data Science using Python', org: 'IIT Madras', proofUrl: LINKEDIN_CERTS_URL },
+  { title: 'Introduction to Large Language Models', org: 'IBM SkillsBuild (2025)', proofUrl: LINKEDIN_CERTS_URL },
+  { title: 'AWS Educate Introduction to Generative AI', org: 'AWS', proofUrl: LINKEDIN_CERTS_URL },
+  { title: 'Deloitte Australia - Data Analytics Job Simulation', org: 'Deloitte', proofUrl: LINKEDIN_CERTS_URL },
+  { title: 'Tata - GenAI Powered Data Analytics Job Simulation', org: 'Tata', proofUrl: LINKEDIN_CERTS_URL }
 ]
 
 const ACHIEVEMENTS = [
@@ -41,14 +43,7 @@ export default function Credentials() {
           <h2 className={`s-h rev ${isVisible ? 'in' : ''} d2`}>
             Certificates and Achievements
           </h2>
-          <p className={`section-desc rev ${isVisible ? 'in' : ''} d3`} style={{
-            fontFamily: 'var(--mono)',
-            fontSize: '14px',
-            letterSpacing: '.05em',
-            color: 'var(--faint)',
-            marginTop: '20px',
-            lineHeight: '1.6'
-          }}>
+          <p className={`section-desc rev ${isVisible ? 'in' : ''} d3`}>
             Recognition of professional growth through certifications from leading institutions and scholarship awards for academic excellence.
           </p>
         </div>
@@ -86,7 +81,7 @@ export default function Credentials() {
               >
                 <div className="cert-i" style={{
                   fontFamily: 'var(--mono)',
-                  fontSize: '9px',
+                  fontSize: '10px',
                   color: 'var(--faint)',
                   letterSpacing: '.1em',
                   minWidth: '22px',
@@ -96,7 +91,7 @@ export default function Credentials() {
                 </div>
                 <div>
                   <div className="cert-t" style={{
-                    fontSize: '14px',
+                    fontSize: '16px',
                     fontWeight: '500',
                     lineHeight: '1.35',
                     marginBottom: '4px',
@@ -106,13 +101,23 @@ export default function Credentials() {
                   </div>
                   <div className="cert-o" style={{
                     fontFamily: 'var(--mono)',
-                    fontSize: '9px',
+                    fontSize: '11px',
+                    fontWeight: '700',
                     letterSpacing: '.1em',
                     textTransform: 'uppercase',
-                    color: 'var(--faint)'
+                    color: 'rgba(var(--white-rgb), 0.72)'
                   }}>
                     {cert.org}
                   </div>
+
+                  <a
+                    className="cert-proof-btn"
+                    href={cert.proofUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    VIEW PROOF <span aria-hidden="true">↗</span>
+                  </a>
                 </div>
               </div>
             ))}

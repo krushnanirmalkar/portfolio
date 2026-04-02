@@ -58,14 +58,7 @@ export default function Projects() {
           <h2 className={`s-h rev ${isVisible ? 'in' : ''} d2`}>
             Featured Projects
           </h2>
-          <p className={`section-desc rev ${isVisible ? 'in' : ''} d3`} style={{
-            fontFamily: 'var(--mono)',
-            fontSize: '14px',
-            letterSpacing: '.05em',
-            color: 'var(--faint)',
-            marginTop: '20px',
-            lineHeight: '1.6'
-          }}>
+          <p className={`section-desc rev ${isVisible ? 'in' : ''} d3`}>
             Showcasing web applications, digital platforms, and full-stack solutions that solve real problems for organizations and communities.
           </p>
         </div>
