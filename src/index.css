@@ -7,6 +7,22 @@
   box-sizing: border-box;
 }
 
+/* ============================================================
+   INTERACTION GUARDS
+   ============================================================ */
+html, body {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+input, textarea, select, option {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+::selection { background: transparent; }
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;

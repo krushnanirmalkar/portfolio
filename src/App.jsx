@@ -65,6 +65,47 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    const onContextMenu = (e) => {
+      e.preventDefault()
+    }
+
+    const onKeyDown = (e) => {
+      const target = e.target
+      const isEditable =
+        target &&
+        (target.isContentEditable ||
+          target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.tagName === 'SELECT')
+
+      if (isEditable) return
+
+      const key = (e.key || '').toLowerCase()
+      const isCtrlOrMeta = e.ctrlKey || e.metaKey
+
+      const isDevtoolsCombo =
+        e.key === 'F12' ||
+        (isCtrlOrMeta && e.shiftKey && ['i', 'j', 'c', 'k'].includes(key)) ||
+        (e.metaKey && e.altKey && ['i', 'j', 'c'].includes(key))
+
+      const isViewSourceCombo = isCtrlOrMeta && ['u', 's'].includes(key)
+
+      if (isDevtoolsCombo || isViewSourceCombo) {
+        e.preventDefault()
+        e.stopPropagation()
+      }
+    }
+
+    document.addEventListener('contextmenu', onContextMenu)
+    document.addEventListener('keydown', onKeyDown, true)
+
+    return () => {
+      document.removeEventListener('contextmenu', onContextMenu)
+      document.removeEventListener('keydown', onKeyDown, true)
+    }
+  }, [])
+
   return (
     <div className="App">
       <div className="c-dot" ref={cursorDotRef}></div>
