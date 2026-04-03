@@ -735,10 +735,10 @@ html[data-theme='light'] .hero-image img {
 .cf-label {
   display: block;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: .15em;
   text-transform: uppercase;
-  color: var(--faint);
+  color: rgba(var(--white-rgb), 0.72);
   padding: 18px 0 5px;
 }
 .cf-inp {
@@ -749,13 +749,16 @@ html[data-theme='light'] .hero-image img {
   color: var(--white);
   font-family: var(--sans);
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   padding-bottom: 16px;
   resize: none;
   line-height: 1.6;
   caret-color: var(--white);
 }
-.cf-inp::placeholder { color: #383838; }
+.cf-inp::placeholder {
+  color: rgba(var(--white-rgb), 0.42);
+  opacity: 1;
+}
 
 /* Message textarea: marked, boxed field */
 .cf-textarea {
@@ -1165,7 +1168,7 @@ nav.stuck {
   }
 
   .cf-inp {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .pill {

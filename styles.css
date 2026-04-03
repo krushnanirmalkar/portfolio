@@ -620,10 +620,11 @@ nav.stuck {
 .cf-label {
   display: block;
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: .15em;
   text-transform: uppercase;
-  color: var(--faint);
+  color: var(--white);
+  opacity: .72;
   padding: 18px 0 5px;
 }
 .cf-inp {
@@ -633,14 +634,17 @@ nav.stuck {
   outline: none;
   color: var(--white);
   font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 16px;
+  font-weight: 400;
   padding-bottom: 16px;
   resize: none;
   line-height: 1.6;
   caret-color: var(--white);
 }
-.cf-inp::placeholder { color: #383838; }
+.cf-inp::placeholder {
+  color: var(--faint);
+  opacity: 1;
+}
 .cf-btn {
   margin-top: 28px;
   background: var(--white);
