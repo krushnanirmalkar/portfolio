@@ -96,6 +96,13 @@
   height: 100%;
 }
 
+.pill-nav-end {
+  display: inline-flex;
+  align-items: stretch;
+  gap: var(--pill-gap);
+  height: 100%;
+}
+
 .pill {
   display: inline-flex;
   align-items: center;

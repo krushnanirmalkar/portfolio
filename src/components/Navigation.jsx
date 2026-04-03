@@ -85,11 +85,21 @@ export default function Navigation({ theme = 'dark', onToggleTheme }) {
           ease="power3.easeOut"
           initialLoadAnimation={true}
           endItem={
-            <AnimatedThemeToggler
-              theme={theme}
-              onToggle={onToggleTheme}
-              className="pill"
-            />
+            <div className="pill-nav-end">
+              <a
+                className="pill pill-resume"
+                href="/media/Krushna_Nirmalkar_FlowCV_Resume_2026-04-03.pdf"
+                download="Krushna_Nirmalkar_Resume.pdf"
+                aria-label="Download resume"
+              >
+                Resume
+              </a>
+              <AnimatedThemeToggler
+                theme={theme}
+                onToggle={onToggleTheme}
+                className="pill"
+              />
+            </div>
           }
         />
       </div>
@@ -129,6 +139,16 @@ export default function Navigation({ theme = 'dark', onToggleTheme }) {
               {item.label}
             </a>
           ))}
+
+          <a
+            href="/media/Krushna_Nirmalkar_FlowCV_Resume_2026-04-03.pdf"
+            className="mobile-menu-item"
+            download="Krushna_Nirmalkar_Resume.pdf"
+            onClick={handleNavClick}
+            aria-label="Download resume"
+          >
+            RESUME
+          </a>
         </div>
       )}
       

@@ -14,6 +14,18 @@ const EXPERIENCES = [
     ]
   },
   {
+    role: 'Full Stack Developer',
+    org: 'DY Patil International University',
+    period: '03/2026 – Present',
+    location: 'Pune',
+    description: 'Building internal tools and web applications for university initiatives and academic projects.',
+    highlights: [
+      'Developing responsive web applications',
+      'Designing scalable backend systems',
+      'Implementing modern frontend frameworks'
+    ]
+  },
+  {
     role: 'Web Development Intern',
     org: 'Raja Bahadur International Limited (Poona Panjarpol Trust)',
     period: '05/2025 – 07/2025',
@@ -24,18 +36,6 @@ const EXPERIENCES = [
       'Collaborated with team to design structure and content',
       'Gathered requirements from stakeholders',
       'Used AI-assisted IDE tools for rapid development'
-    ]
-  },
-  {
-    role: 'Full Stack Developer',
-    org: 'DY Patil International University',
-    period: '2024 – Present',
-    location: 'Pune',
-    description: 'Building internal tools and web applications for university initiatives and academic projects.',
-    highlights: [
-      'Developed responsive web applications',
-      'Designed scalable backend systems',
-      'Implemented modern frontend frameworks'
     ]
   }
 ]
