@@ -8,6 +8,7 @@ import Experience from './components/Experience'
 import Projects from './components/Projects'
 import Credentials from './components/Credentials'
 import Contact from './components/Contact'
+import { AnimatedThemeToggler } from './components/ui/animated-theme-toggler'
 import './App.css'
 
 function App() {
@@ -115,6 +116,12 @@ function App() {
       <Navigation
         theme={theme}
         onToggleTheme={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
+      />
+
+      <AnimatedThemeToggler
+        theme={theme}
+        onToggle={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
+        className="pill theme-fab app-theme-fab"
       />
       <Hero theme={theme} />
       <About />

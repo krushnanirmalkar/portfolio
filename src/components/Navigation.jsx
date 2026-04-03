@@ -108,12 +108,6 @@ export default function Navigation({ theme = 'dark', onToggleTheme }) {
       <div className="nav-mobile">
         <div className="nav-brand">KN</div>
 
-        <AnimatedThemeToggler
-          theme={theme}
-          onToggle={onToggleTheme}
-          className="pill theme-fab"
-        />
-
         <button 
           className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

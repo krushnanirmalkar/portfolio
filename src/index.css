@@ -72,6 +72,11 @@ body {
   cursor: none;
 }
 
+/* Global mobile theme toggle (rendered at App level) */
+.app-theme-fab {
+  display: none;
+}
+
 /* ============================================================
    SCROLLBAR
    ============================================================ */
@@ -977,6 +982,11 @@ nav.stuck {
   .mobile-menu.active { display: flex; }
   .nav-status { display: none; }
 
+  .app-theme-fab {
+    display: inline-flex;
+    z-index: 1500;
+  }
+
   .mobile-menu-item {
     padding-left: 20px;
     padding-right: 20px;
@@ -1196,6 +1206,11 @@ nav.stuck {
   .mobile-menu { display: none; }
   .mobile-menu.active { display: flex; }
   .nav-status { display: none; }
+
+  .app-theme-fab {
+    display: inline-flex;
+    z-index: 1500;
+  }
 
   .mobile-menu-item {
     padding-left: 32px;
