@@ -28,25 +28,12 @@
   font-size: 0 !important;
   min-width: 44px !important;
   min-height: 44px !important;
-  position: fixed !important;
-  right: 20px;
-  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-  z-index: 1200;
 }
 
 /* Ensure theme-fab visuals win over global .pill styles */
 .animated-theme-toggler.theme-fab.pill {
   background: var(--white) !important;
   color: var(--black) !important;
-}
-
-@media (min-width: 769px) {
-  .animated-theme-toggler.theme-fab {
-    position: relative !important;
-    right: auto;
-    bottom: auto;
-    z-index: auto;
-  }
 }
 
 .animated-theme-toggler:focus-visible {
